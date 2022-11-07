@@ -1,18 +1,20 @@
 import React from "react"
+import styled from "styled-components"
+
+export const Container = styled.div`
+  background-color: #8c64e6;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 function App() {
   return (
-    <div
-      style={{
-        backgroundColor: "#8C64E6",
-        width: "100%",
-        minHeight: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}>
-      <h1>Hello</h1>
-    </div>
+    <Container>
+      <h1>Hello 🦐</h1>
+    </Container>
   )
 }
 

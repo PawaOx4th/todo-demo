@@ -14,7 +14,7 @@ function ListContent() {
     <ListWrapper>
       <ul>
         <ListItem>Draft</ListItem>
-        <ListItem>P' x</ListItem>
+        <ListItem></ListItem>
         <ListItem>Earth</ListItem>
       </ul>
     </ListWrapper>

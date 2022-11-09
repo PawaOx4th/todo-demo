@@ -1,14 +1,20 @@
 import React from "react"
+import styled from "styled-components"
+
+const Container = styled.div`
+  display: flex;
+  gap: 1rem;
+`
 
 function CardContent() {
   return (
-    <div>
+    <Container>
       <input type="checkbox" />
       <span>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam,
         exercitationem.
       </span>
-    </div>
+    </Container>
   )
 }
 

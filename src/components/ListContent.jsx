@@ -14,8 +14,8 @@ function ListContent() {
     <ListWrapper>
       <ul>
         <ListItem />
-        <ListItem />
-        <ListItem />
+        {/* <ListItem />
+        <ListItem /> */}
       </ul>
     </ListWrapper>
   )

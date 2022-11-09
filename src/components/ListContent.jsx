@@ -13,9 +13,9 @@ function ListContent() {
   return (
     <ListWrapper>
       <ul>
-        <ListItem />
-        {/* <ListItem />
-        <ListItem /> */}
+        <ListItem>Draft</ListItem>
+        <ListItem>P' x</ListItem>
+        <ListItem>Earth</ListItem>
       </ul>
     </ListWrapper>
   )

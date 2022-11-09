@@ -12,7 +12,7 @@ const Input = styled.input`
   width: 24px;
   background-color: linear-gradient(180deg, #ffffff 0%, #e8eaee 100%);
   border-radius: 7px;
-  border: 3px solid #ced1da;
+  border: 2.29px solid #ced1da;
   cursor: pointer;
   user-select: none;
   text-rendering: auto;
@@ -33,20 +33,19 @@ const Input = styled.input`
     display: block;
   }
 `
-function CardContent() {
+
+const Span = styled.span`
+  color: #383f50;
+  font-size: 1rem;
+  font-weight: 400;
+`
+function CardContent({ children }) {
   return (
     <Container>
       <div>
         <Input type="checkbox" />
       </div>
-      <span>
-        Lorem Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam,
-        exercitationem. Lorem ipsum dolor, xxsit amet consectetur adipisicing
-        elit. Numquam, exercitationem. Lorem ipsum dolor, sit amet consectetur
-        adipisicing elit. Numquam, exercitationem. Lorem ipsum dolor, sit amet
-        consectetur adipisicing elit. Numquam, exercitationem. ipsum dolor, sit
-        amet consectetur adipisicing elit. Numquam, exercitationem.
-      </span>
+      <Span>{children}</Span>
     </Container>
   )
 }

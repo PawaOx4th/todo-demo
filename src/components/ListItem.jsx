@@ -9,10 +9,10 @@ const Li = styled.li`
   padding: 1rem 0.5rem;
 `
 
-function ListItem() {
+function ListItem({ children }) {
   return (
     <Li>
-      <CardContent />
+      <CardContent>{children}</CardContent>
     </Li>
   )
 }

@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Span } from "./common"
 
 const Li = styled.li`
   list-style: none;
@@ -40,12 +41,6 @@ const Input = styled.input`
   &:checked:after {
     display: block;
   }
-`
-
-const Span = styled.span`
-  color: #383f50;
-  font-size: 1rem;
-  font-weight: 400;
 `
 
 function ListItem({ children }) {

@@ -5,7 +5,7 @@ import { ButtonWrapper, Container } from "./components/common"
 
 function App() {
   return (
-    <Container>
+    <Container customPadding="2rem 0">
       <ButtonWrapper>
         <AddTaskButton />
       </ButtonWrapper>

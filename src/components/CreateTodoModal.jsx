@@ -46,7 +46,7 @@ const Input = styled.input`
   padding: 10px 14px;
 `
 
-function CreateTodoModal() {
+function CreateTodoModal({ onClose }) {
   return (
     <ModalWrapper>
       <ModalContent>
@@ -58,13 +58,12 @@ function CreateTodoModal() {
           <small>Please enter a task name to do.</small>
         </div>
         <Input type="text" placeholder="New Task" />
-
         <div
           style={{
             display: "flex",
             justifyContent: "flex-end"
           }}>
-          <AddTaskButton bgColor={"#7F56D9"} />
+          <AddTaskButton bgColor={"#7F56D9"} onClick={() => onClose()} />
         </div>
       </ModalContent>
     </ModalWrapper>

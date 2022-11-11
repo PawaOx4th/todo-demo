@@ -30,14 +30,14 @@ const Button = styled.button`
   &:active {
     outline: 1px solid #fff;
     outline-offset: 2px;
-    transform: scale(1.2);
+    transform: scale(1.1);
     transition: 0.35s cubic-bezier(0.175, 0.885, 0.32, 0.2);
   }
 `
 
-function AddTaskButton({ bgColor }) {
+function AddTaskButton({ bgColor, onClick }) {
   return (
-    <Button bgColor={bgColor}>
+    <Button bgColor={bgColor} onClick={() => onClick()}>
       Add task <i className="fa-solid fa-plus"></i>
     </Button>
   )

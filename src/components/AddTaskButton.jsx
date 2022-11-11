@@ -2,7 +2,8 @@ import styled from "styled-components"
 import { ThemeColor } from "../config/configTheme"
 
 const Button = styled.button`
-  background-color: ${ThemeColor.btn.background};
+  background-color: ${(props) =>
+    props.bgColor ? props.bgColor : ThemeColor.btn.background};
   width: 129px;
   height: 44px;
   color: #fff;
@@ -34,9 +35,9 @@ const Button = styled.button`
   }
 `
 
-function AddTaskButton() {
+function AddTaskButton({ bgColor }) {
   return (
-    <Button>
+    <Button bgColor={bgColor}>
       Add task <i className="fa-solid fa-plus"></i>
     </Button>
   )

@@ -51,7 +51,7 @@ function CreateTodoModal({ onClose }) {
     <ModalWrapper>
       <ModalContent>
         <FlagIcon>
-          <i class="fa-regular fa-flag"></i>
+          <i className="fa-regular fa-flag"></i>
         </FlagIcon>
         <div>
           <h3>To do list</h3>

@@ -3,6 +3,7 @@ import ListItem from "./ListItem"
 import styled from "styled-components"
 import { MOCK_TODO } from "../example"
 import axios from "axios"
+import http from "../config/axiosGlobalConfig"
 
 export const ListWrapper = styled.div`
   width: 500px;
@@ -17,7 +18,7 @@ function ListContent() {
   useEffect(() => {
     let clear = false
     const onFetchData = async () => {
-      const response = await axios.get("/MOCK_DATA_TODO.json")
+      const response = await http.get("/todos")
       !clear && setTodos(response.data)
     }
 
@@ -33,7 +34,7 @@ function ListContent() {
       <ul>
         {todos &&
           todos.map((todo, index) => {
-            return <ListItem key={todo.id}>{todo.content}</ListItem>
+            return <ListItem key={todo.id}>{JSON.stringify(todo)}</ListItem>
           })}
       </ul>
     </ListWrapper>

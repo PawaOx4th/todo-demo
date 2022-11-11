@@ -14,7 +14,18 @@ function App() {
   }
 
   useEffect(() => {
+    if (isOpenModal) {
+      document.documentElement.style.overflowY = "hidden"
+    }
+
+    return () => {
+      document.documentElement.style.overflowY = "auto"
+    }
+  }, [isOpenModal])
+
+  useEffect(() => {
     document.addEventListener("keyup", handleEscapeOnCloseModal, false)
+
     return () => {
       document.removeEventListener("keyup", handleEscapeOnCloseModal, false)
     }

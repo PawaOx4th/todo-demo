@@ -10,6 +10,7 @@ export const ListWrapper = styled.div`
   min-height: 500px;
   border-radius: 12px;
   background-color: #fff;
+  padding: 2rem;
 `
 
 function ListContent() {

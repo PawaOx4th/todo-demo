@@ -2,9 +2,11 @@ import { ThemeColor } from "../../config/configTheme"
 import styled from "styled-components"
 
 export const Container = styled.div`
+  position: relative;
   background-color: ${ThemeColor.container.background};
   width: 100%;
   min-height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

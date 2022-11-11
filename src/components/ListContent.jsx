@@ -15,18 +15,13 @@ export const ListWrapper = styled.div`
 function ListContent() {
   const [todos, setTodos] = useState()
 
+  const onFetchData = async () => {
+    const response = await http.get("/todos")
+    setTodos(response.data)
+  }
+
   useEffect(() => {
-    let clear = false
-    const onFetchData = async () => {
-      const response = await http.get("/todos")
-      !clear && setTodos(response.data)
-    }
-
     onFetchData()
-
-    return () => {
-      clear = true
-    }
   }, [])
 
   return (
@@ -34,7 +29,7 @@ function ListContent() {
       <ul>
         {todos &&
           todos.map((todo, index) => {
-            return <ListItem key={todo.id}>{JSON.stringify(todo)}</ListItem>
+            return <ListItem key={todo.id}>{todo.title}</ListItem>
           })}
       </ul>
     </ListWrapper>

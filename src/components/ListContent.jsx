@@ -18,7 +18,11 @@ function ListContent() {
 
   const onFetchData = async () => {
     // const response = await http.get("/rest/card/board")
-    const response = await http.get("/todos")
+    const response = await http.get("/posts", {
+      params: {
+        _limit: 400
+      }
+    })
     setTodos(response.data)
   }
 

@@ -1,7 +1,8 @@
-import React, { useState } from "react"
+import React, { useState, useMemo } from "react"
 import { useRef } from "react"
 import styled from "styled-components"
 import AddTaskButton from "./AddTaskButton"
+import http from "../config/axiosGlobalConfig"
 
 const ModalWrapper = styled.div`
   position: fixed;
@@ -49,10 +50,30 @@ const Input = styled.input`
 
 function CreateTodoModal({ onClose }) {
   const [content, setContent] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
-  const handleCreateNewTodo = (todoContent) => {
-    console.log("🍟 todoContent :", todoContent)
+  const handleCreateNewTodo = async (todoContent) => {
+    try {
+      const newTodo = {
+        title: todoContent,
+        body: "bar",
+        userId: 1
+      }
+
+      setIsLoading(true)
+      const response = await http.post("/posts", {
+        ...newTodo
+      })
+      console.log("🍟 response :", response)
+    } catch (error) {
+    } finally {
+      setIsLoading(false)
+    }
   }
+
+  const isDisabledButton = useMemo(() => {
+    return content.length <= 4 || isLoading
+  }, [isLoading, content])
 
   return (
     <ModalWrapper>
@@ -75,6 +96,7 @@ function CreateTodoModal({ onClose }) {
             type="text"
             placeholder="New Task"
             value={content}
+            disabled={isLoading}
             onChange={(e) => setContent(e.target.value)}
           />
         </label>
@@ -87,7 +109,7 @@ function CreateTodoModal({ onClose }) {
           <AddTaskButton
             type="submit"
             bgColor={"#7F56D9"}
-            disabled={content.length <= 4}
+            disabled={isDisabledButton}
           />
         </div>
       </ModalContent>

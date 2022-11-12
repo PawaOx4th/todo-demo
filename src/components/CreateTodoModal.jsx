@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useRef } from "react"
 import styled from "styled-components"
 import AddTaskButton from "./AddTaskButton"
 
@@ -48,6 +49,7 @@ const Input = styled.input`
 
 function CreateTodoModal({ onClose }) {
   const [content, setContent] = useState("")
+  const inputEle = useRef()
 
   return (
     <ModalWrapper>
@@ -60,12 +62,10 @@ function CreateTodoModal({ onClose }) {
           <small>Please enter a task name to do.</small>
         </div>
         <Input
+          id="input-todo"
           type="text"
           placeholder="New Task"
-          value={content}
-          onChange={(event) => {
-            setContent(event.target.value)
-          }}
+          ref={inputEle}
         />
         <div
           style={{
@@ -73,7 +73,10 @@ function CreateTodoModal({ onClose }) {
             justifyContent: "flex-end"
           }}
         >
-          <AddTaskButton bgColor={"#7F56D9"} onClick={() => onClose()} />
+          <AddTaskButton
+            bgColor={"#7F56D9"}
+            onClick={() => console.log("🍟 :", inputEle.current.value)}
+          />
         </div>
       </ModalContent>
     </ModalWrapper>

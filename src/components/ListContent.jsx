@@ -17,12 +17,7 @@ function ListContent() {
   const [todos, setTodos] = useState()
 
   const onFetchData = async () => {
-    // const response = await http.get("/rest/card/board")
-    const response = await http.get("/posts", {
-      params: {
-        _limit: 400
-      }
-    })
+    const response = await http.get("/rest/card/board")
     setTodos(response.data)
   }
 
@@ -35,7 +30,7 @@ function ListContent() {
       <ul>
         {todos &&
           todos.map((todo, index) => {
-            return <ListItem key={todo.id}>{todo.title}</ListItem>
+            return <ListItem key={todo.id}>{todo.content}</ListItem>
           })}
       </ul>
     </ListWrapper>

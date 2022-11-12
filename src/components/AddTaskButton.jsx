@@ -43,9 +43,21 @@ const Button = styled.button`
   }
 `
 
-function AddTaskButton({ bgColor, onClick, disabled }) {
+function AddTaskButton({
+  bgColor,
+  onClick,
+  disabled,
+  type = "button",
+  onSubmit
+}) {
   return (
-    <Button bgColor={bgColor} onClick={() => onClick()} disabled={disabled}>
+    <Button
+      type={type}
+      bgColor={bgColor}
+      onClick={() => onClick && onClick()}
+      onSubmit={() => onSubmit && onSubmit()}
+      disabled={disabled}
+    >
       Add task <i className="fa-solid fa-plus"></i>
     </Button>
   )

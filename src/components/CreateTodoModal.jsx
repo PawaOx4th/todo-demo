@@ -16,7 +16,7 @@ const ModalWrapper = styled.div`
   align-items: center;
 `
 
-const ModalContent = styled.div`
+const ModalContent = styled.form`
   background-color: #fff;
   width: 400px;
   height: 300px;
@@ -50,9 +50,18 @@ const Input = styled.input`
 function CreateTodoModal({ onClose }) {
   const [content, setContent] = useState("")
 
+  const handleCreateNewTodo = (todoContent) => {
+    console.log("🍟 todoContent :", todoContent)
+  }
+
   return (
     <ModalWrapper>
-      <ModalContent>
+      <ModalContent
+        onSubmit={(e) => {
+          e.preventDefault()
+          handleCreateNewTodo(content)
+        }}
+      >
         <FlagIcon>
           <i className="fa-regular fa-flag"></i>
         </FlagIcon>
@@ -60,13 +69,15 @@ function CreateTodoModal({ onClose }) {
           <h3>To do list</h3>
           <small>Please enter a task name to do.</small>
         </div>
-        <Input
-          id="input-todo"
-          type="text"
-          placeholder="New Task"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
+        <label htmlFor="input-todo">
+          <Input
+            id="input-todo"
+            type="text"
+            placeholder="New Task"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+        </label>
         <div
           style={{
             display: "flex",
@@ -74,11 +85,9 @@ function CreateTodoModal({ onClose }) {
           }}
         >
           <AddTaskButton
+            type="submit"
             bgColor={"#7F56D9"}
-            onClick={() => {
-              console.log("🍟 :")
-            }}
-            disabled={false}
+            disabled={content.length <= 4}
           />
         </div>
       </ModalContent>

@@ -49,7 +49,6 @@ const Input = styled.input`
 
 function CreateTodoModal({ onClose }) {
   const [content, setContent] = useState("")
-  const inputEle = useRef()
 
   return (
     <ModalWrapper>
@@ -65,7 +64,8 @@ function CreateTodoModal({ onClose }) {
           id="input-todo"
           type="text"
           placeholder="New Task"
-          ref={inputEle}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
         />
         <div
           style={{
@@ -75,7 +75,10 @@ function CreateTodoModal({ onClose }) {
         >
           <AddTaskButton
             bgColor={"#7F56D9"}
-            onClick={() => console.log("🍟 :", inputEle.current.value)}
+            onClick={() => {
+              console.log("🍟 :")
+            }}
+            disabled={false}
           />
         </div>
       </ModalContent>

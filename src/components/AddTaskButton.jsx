@@ -33,11 +33,19 @@ const Button = styled.button`
     transform: scale(1.1);
     transition: 0.35s cubic-bezier(0.175, 0.885, 0.32, 0.2);
   }
+
+  &:disabled {
+    filter: brightness(0.8);
+    cursor: not-allowed;
+    &:active {
+      transform: scale(1);
+    }
+  }
 `
 
-function AddTaskButton({ bgColor, onClick }) {
+function AddTaskButton({ bgColor, onClick, disabled }) {
   return (
-    <Button bgColor={bgColor} onClick={() => onClick()}>
+    <Button bgColor={bgColor} onClick={() => onClick()} disabled={disabled}>
       Add task <i className="fa-solid fa-plus"></i>
     </Button>
   )

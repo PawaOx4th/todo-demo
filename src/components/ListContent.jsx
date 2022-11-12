@@ -17,7 +17,7 @@ function ListContent() {
   const [todos, setTodos] = useState()
 
   const onFetchData = async () => {
-    const response = await http.get("/todos")
+    const response = await http.get("/rest/card/board")
     setTodos(response.data)
   }
 

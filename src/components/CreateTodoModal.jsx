@@ -48,30 +48,29 @@ const Input = styled.input`
   padding: 10px 14px;
 `
 
-function CreateTodoModal({ onClose, onFetchData }) {
+function CreateTodoModal({ onClose, onFetchData, onCreateNewTodo }) {
   const [content, setContent] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
+  const onCreateNewTodoData = (todoContent) => {
+    return {
+      topic: "kaen",
+      content: todoContent,
+      status: "TODO",
+      priority: 0,
+      removeStatus: false
+    }
+  }
+
   const handleCreateNewTodo = async (todoContent) => {
     try {
-      const newTodo = {
-        topic: "kaen",
-        content: todoContent,
-        status: "TODO",
-        priority: 0,
-        removeStatus: false
-      }
-
       setIsLoading(true)
-      await http.post("/rest/card", {
-        ...newTodo
-      })
-
+      const newData = onCreateNewTodoData(todoContent)
+      await onCreateNewTodo(newData)
       await onFetchData()
-
+      setContent("")
       toast.success("Create new todo has successfully")
       onClose()
-      setContent("")
     } catch (error) {
       toast.error(`${error?.response?.data?.message ?? "Opp !!"}`)
     } finally {

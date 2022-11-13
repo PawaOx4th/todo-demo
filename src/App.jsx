@@ -40,6 +40,12 @@ function App() {
     setTodos(response.data)
   }
 
+  const onCreateNewTodo = async (newTodo) => {
+    return await http.post("/rest/card", {
+      ...newTodo
+    })
+  }
+
   useEffect(() => {
     onFetchData()
   }, [])
@@ -49,6 +55,7 @@ function App() {
       <ToastContainer />
       {isOpenModal && (
         <CreateTodoModal
+          onCreateNewTodo={onCreateNewTodo}
           onFetchData={onFetchData}
           onClose={() => {
             setIsOpenModal((prev) => !prev)

@@ -69,6 +69,8 @@ function CreateTodoModal({ onClose }) {
       })
 
       toast.success("Create new todo has successfully")
+      onClose()
+      setContent("")
     } catch (error) {
       toast.error(`${error?.response?.data?.message ?? "Opp !!"}`)
     } finally {

@@ -43,12 +43,18 @@ const Input = styled.input`
   }
 `
 
-function ListItem({ children }) {
+function ListItem({ children, status, onUpdatedTodo, id, data }) {
   return (
     <Li>
       <Container>
         <div>
-          <Input type="checkbox" />
+          <Input
+            type="checkbox"
+            checked={status === "DONE"}
+            onChange={(e) => {
+              onUpdatedTodo(id, "DONE", data)
+            }}
+          />
         </div>
         <Span>{children ? children : "🚨"}</Span>
       </Container>

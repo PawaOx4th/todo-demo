@@ -23,6 +23,20 @@ export default function useTodo() {
     })
   }
 
+  const onUpdatedTodo = async (id, status, rawData) => {
+    const { topic, content, priority, removeStatus } = rawData
+    const newData = {
+      topic,
+      content,
+      priority,
+      removeStatus,
+      status
+    }
+
+    console.log("🟡 id :", id)
+    console.log("🍟 NEWDATA :", newData)
+  }
+
   useEffect(() => {
     onFetchData()
   }, [])
@@ -58,6 +72,7 @@ export default function useTodo() {
     setTodos,
     onFetchData,
     onCreateNewTodo,
-    handleEscapeOnCloseModal
+    handleEscapeOnCloseModal,
+    onUpdatedTodo
   }
 }

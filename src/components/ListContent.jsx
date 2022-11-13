@@ -10,13 +10,23 @@ export const ListWrapper = styled.div`
   padding: 2rem;
 `
 
-function ListContent({ data }) {
+function ListContent({ data, onUpdatedTodo }) {
   return (
     <ListWrapper>
       <ul>
         {data &&
           data.map((todo, index) => {
-            return <ListItem key={todo.id}>{todo.content}</ListItem>
+            return (
+              <ListItem
+                key={todo.id}
+                status={todo.status}
+                onUpdatedTodo={onUpdatedTodo}
+                id={todo.id}
+                data={todo}
+              >
+                {todo.content}
+              </ListItem>
+            )
           })}
       </ul>
     </ListWrapper>

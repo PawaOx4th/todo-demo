@@ -4,7 +4,7 @@ import AddTaskButton from "./components/AddTaskButton"
 import { ButtonWrapper, Container } from "./components/common"
 import CreateTodoModal from "./components/CreateTodoModal"
 import ListContent from "./components/ListContent"
-import http from "./config/axiosGlobalConfig"
+
 import useTodo from "./hook/useTodo"
 
 function App() {
@@ -14,7 +14,8 @@ function App() {
     onCreateNewTodo,
     onFetchData,
     todos,
-    handleEscapeOnCloseModal
+    handleEscapeOnCloseModal,
+    onUpdatedTodo
   } = useTodo()
 
   return (
@@ -36,7 +37,7 @@ function App() {
           }}
         />
       </ButtonWrapper>
-      <ListContent data={todos} />
+      <ListContent data={todos} onUpdatedTodo={onUpdatedTodo} />
     </Container>
   )
 }

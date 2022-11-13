@@ -4,6 +4,7 @@ import ListContent from "./components/ListContent"
 import { ButtonWrapper, Container } from "./components/common"
 import CreateTodoModal from "./components/CreateTodoModal"
 import { ToastContainer } from "react-toastify"
+import http from "./config/axiosGlobalConfig"
 
 function App() {
   const [isOpenModal, setIsOpenModal] = useState(false)
@@ -32,11 +33,23 @@ function App() {
     }
   }, [])
 
+  const [todos, setTodos] = useState()
+
+  const onFetchData = async () => {
+    const response = await http.get("/rest/card/board")
+    setTodos(response.data)
+  }
+
+  useEffect(() => {
+    onFetchData()
+  }, [])
+
   return (
     <Container customPadding="2rem 0">
       <ToastContainer />
       {isOpenModal && (
         <CreateTodoModal
+          onFetchData={onFetchData}
           onClose={() => {
             setIsOpenModal((prev) => !prev)
           }}
@@ -49,7 +62,7 @@ function App() {
           }}
         />
       </ButtonWrapper>
-      <ListContent />
+      <ListContent data={todos} />
     </Container>
   )
 }

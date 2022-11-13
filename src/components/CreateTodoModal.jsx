@@ -49,7 +49,7 @@ const Input = styled.input`
   padding: 10px 14px;
 `
 
-function CreateTodoModal({ onClose }) {
+function CreateTodoModal({ onClose, onFetchData }) {
   const [content, setContent] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
@@ -67,6 +67,8 @@ function CreateTodoModal({ onClose }) {
       const response = await http.post("/rest/card", {
         ...newTodo
       })
+
+      await onFetchData()
 
       toast.success("Create new todo has successfully")
       onClose()

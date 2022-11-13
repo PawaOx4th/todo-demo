@@ -13,23 +13,12 @@ export const ListWrapper = styled.div`
   padding: 2rem;
 `
 
-function ListContent() {
-  const [todos, setTodos] = useState()
-
-  const onFetchData = async () => {
-    const response = await http.get("/rest/card/board")
-    setTodos(response.data)
-  }
-
-  useEffect(() => {
-    onFetchData()
-  }, [])
-
+function ListContent({ data }) {
   return (
     <ListWrapper>
       <ul>
-        {todos &&
-          todos.map((todo, index) => {
+        {data &&
+          data.map((todo, index) => {
             return <ListItem key={todo.id}>{todo.content}</ListItem>
           })}
       </ul>

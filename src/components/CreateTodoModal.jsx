@@ -1,9 +1,8 @@
-import React, { useState, useMemo } from "react"
-import { useRef } from "react"
-import styled from "styled-components"
-import AddTaskButton from "./AddTaskButton"
-import http from "../config/axiosGlobalConfig"
+import React, { useMemo, useState } from "react"
 import { toast } from "react-toastify"
+import styled from "styled-components"
+import http from "../config/axiosGlobalConfig"
+import AddTaskButton from "./AddTaskButton"
 
 const ModalWrapper = styled.div`
   position: fixed;

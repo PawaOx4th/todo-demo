@@ -1,9 +1,6 @@
-import React, { useEffect, useState, useLayoutEffect } from "react"
-import ListItem from "./ListItem"
+import React from "react"
 import styled from "styled-components"
-import { MOCK_TODO } from "../example"
-import axios from "axios"
-import http from "../config/axiosGlobalConfig"
+import ListItem from "./ListItem"
 
 export const ListWrapper = styled.div`
   width: 500px;

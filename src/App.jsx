@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect, useState } from "react"
+import { ToastContainer } from "react-toastify"
 import AddTaskButton from "./components/AddTaskButton"
-import ListContent from "./components/ListContent"
 import { ButtonWrapper, Container } from "./components/common"
 import CreateTodoModal from "./components/CreateTodoModal"
-import { ToastContainer } from "react-toastify"
+import ListContent from "./components/ListContent"
 import http from "./config/axiosGlobalConfig"
 
 function App() {

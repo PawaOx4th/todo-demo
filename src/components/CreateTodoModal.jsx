@@ -55,16 +55,18 @@ function CreateTodoModal({ onClose }) {
   const handleCreateNewTodo = async (todoContent) => {
     try {
       const newTodo = {
-        title: todoContent,
-        body: "bar",
-        userId: 1
+        topic: "kaen",
+        content: todoContent,
+        status: "TODO",
+        priority: 0,
+        removeStatus: false
       }
 
       setIsLoading(true)
-      const response = await http.post("/posts", {
+      const response = await http.post("/rest/card", {
         ...newTodo
       })
-      console.log("🍟 response :", response)
+      console.log("🍟 congreat !! :", response)
     } catch (error) {
     } finally {
       setIsLoading(false)

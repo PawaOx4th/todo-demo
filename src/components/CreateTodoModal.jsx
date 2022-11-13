@@ -3,6 +3,7 @@ import { useRef } from "react"
 import styled from "styled-components"
 import AddTaskButton from "./AddTaskButton"
 import http from "../config/axiosGlobalConfig"
+import { toast } from "react-toastify"
 
 const ModalWrapper = styled.div`
   position: fixed;
@@ -66,8 +67,10 @@ function CreateTodoModal({ onClose }) {
       const response = await http.post("/rest/card", {
         ...newTodo
       })
-      console.log("🍟 congreat !! :", response)
+
+      toast.success("Create new todo has successfully")
     } catch (error) {
+      toast.error(`${error?.response?.data?.message ?? "Opp !!"}`)
     } finally {
       setIsLoading(false)
     }

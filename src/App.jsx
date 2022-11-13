@@ -3,6 +3,7 @@ import AddTaskButton from "./components/AddTaskButton"
 import ListContent from "./components/ListContent"
 import { ButtonWrapper, Container } from "./components/common"
 import CreateTodoModal from "./components/CreateTodoModal"
+import { ToastContainer } from "react-toastify"
 
 function App() {
   const [isOpenModal, setIsOpenModal] = useState(false)
@@ -33,6 +34,7 @@ function App() {
 
   return (
     <Container customPadding="2rem 0">
+      <ToastContainer />
       {isOpenModal && (
         <CreateTodoModal
           onClose={() => {

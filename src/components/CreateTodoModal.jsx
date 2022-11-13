@@ -63,7 +63,7 @@ function CreateTodoModal({ onClose, onFetchData }) {
       }
 
       setIsLoading(true)
-      const response = await http.post("/rest/card", {
+      await http.post("/rest/card", {
         ...newTodo
       })
 

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react"
 export default function useTodo() {
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [todos, setTodos] = useState()
+  const [isLoading, setIsLoading] = useState(false)
 
   const onFetchData = async () => {
     const response = await http.get("/rest/card/board")
@@ -24,17 +25,23 @@ export default function useTodo() {
   }
 
   const onUpdatedTodo = async (id, status, rawData) => {
-    const { topic, content, priority, removeStatus } = rawData
-    const newData = {
-      topic,
-      content,
-      priority,
-      removeStatus,
-      status
-    }
+    try {
+      setIsLoading(true)
+      const { topic, content, priority, removeStatus } = rawData
+      const newData = {
+        topic,
+        content,
+        priority,
+        removeStatus,
+        status
+      }
 
-    console.log("🟡 id :", id)
-    console.log("🍟 NEWDATA :", newData)
+      await http.put(`/rest/card/${id}`, { ...newData })
+      await onFetchData()
+    } catch (error) {
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   useEffect(() => {
@@ -73,6 +80,7 @@ export default function useTodo() {
     onFetchData,
     onCreateNewTodo,
     handleEscapeOnCloseModal,
-    onUpdatedTodo
+    onUpdatedTodo,
+    isLoading
   }
 }

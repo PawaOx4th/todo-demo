@@ -30,6 +30,10 @@ const Input = styled.input`
   justify-content: center;
   align-items: center;
 
+  &:disabled {
+    background-color: #e2e2e2;
+  }
+
   &:after {
     content: "\f00c";
     font: var(--fa-font-solid);
@@ -43,7 +47,7 @@ const Input = styled.input`
   }
 `
 
-function ListItem({ children, status, onUpdatedTodo, id, data }) {
+function ListItem({ children, status, onUpdatedTodo, id, data, disabled }) {
   return (
     <Li>
       <Container>
@@ -54,6 +58,7 @@ function ListItem({ children, status, onUpdatedTodo, id, data }) {
             onChange={(e) => {
               onUpdatedTodo(id, "DONE", data)
             }}
+            disabled={disabled}
           />
         </div>
         <Span>{children ? children : "🚨"}</Span>

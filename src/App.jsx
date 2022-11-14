@@ -15,7 +15,8 @@ function App() {
     onFetchData,
     todos,
     handleEscapeOnCloseModal,
-    onUpdatedTodo
+    onUpdatedTodo,
+    isLoading
   } = useTodo()
 
   return (
@@ -32,12 +33,17 @@ function App() {
       )}
       <ButtonWrapper>
         <AddTaskButton
+          disabled={isLoading}
           onClick={() => {
             setIsOpenModal((prev) => !prev)
           }}
         />
       </ButtonWrapper>
-      <ListContent data={todos} onUpdatedTodo={onUpdatedTodo} />
+      <ListContent
+        data={todos}
+        onUpdatedTodo={onUpdatedTodo}
+        disabled={isLoading}
+      />
     </Container>
   )
 }

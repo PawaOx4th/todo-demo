@@ -10,7 +10,7 @@ export const ListWrapper = styled.div`
   padding: 2rem;
 `
 
-function ListContent({ data, onUpdatedTodo }) {
+function ListContent({ data, onUpdatedTodo, disabled }) {
   return (
     <ListWrapper>
       <ul>
@@ -23,6 +23,7 @@ function ListContent({ data, onUpdatedTodo }) {
                 onUpdatedTodo={onUpdatedTodo}
                 id={todo.id}
                 data={todo}
+                disabled={disabled}
               >
                 {todo.content}
               </ListItem>

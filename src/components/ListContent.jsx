@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import ListItem from "./ListItem"
+import { TodoContext } from "../context/todoContext"
 
 export const ListWrapper = styled.div`
   width: 500px;
@@ -11,8 +12,11 @@ export const ListWrapper = styled.div`
 `
 
 function ListContent({ data, onUpdatedTodo, disabled }) {
+  const counterContext = useContext(TodoContext)
+
   return (
     <ListWrapper>
+      <h1>{counterContext.counter}</h1>
       <ul>
         {data &&
           data.map((todo, index) => {

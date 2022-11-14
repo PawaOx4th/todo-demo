@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import styled from "styled-components"
 import { Span } from "./common"
 
@@ -56,7 +56,11 @@ function ListItem({ children, status, onUpdatedTodo, id, data, disabled }) {
             type="checkbox"
             checked={status === "DONE"}
             onChange={(e) => {
-              onUpdatedTodo(id, "DONE", data)
+              if (e.target.checked) {
+                onUpdatedTodo(id, "DONE", data)
+              } else {
+                onUpdatedTodo(id, "TODO", data)
+              }
             }}
             disabled={disabled}
           />
@@ -67,4 +71,4 @@ function ListItem({ children, status, onUpdatedTodo, id, data, disabled }) {
   )
 }
 
-export default ListItem
+export default memo(ListItem)

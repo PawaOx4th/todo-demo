@@ -1,6 +1,9 @@
 import { createContext } from "react"
 
 export const TodoContext = createContext({
-  counter: 0,
-  onIncrement: () => {}
+  todos: null,
+  isLoading: false,
+  onFetchData: () => {},
+  onCreateNewTodo: () => {},
+  onUpdatedTodo: () => {}
 })

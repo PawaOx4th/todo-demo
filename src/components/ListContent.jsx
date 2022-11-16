@@ -2,6 +2,7 @@ import React, { useContext } from "react"
 import styled from "styled-components"
 import ListItem from "./ListItem"
 import { TodoContext } from "../context/todoContext"
+import useTodo from "../hook/useTodo"
 
 export const ListWrapper = styled.div`
   width: 500px;
@@ -11,15 +12,14 @@ export const ListWrapper = styled.div`
   padding: 2rem;
 `
 
-function ListContent({ data, onUpdatedTodo, disabled }) {
-  const counterContext = useContext(TodoContext)
+function ListContent() {
+  const { todos, onUpdatedTodo, isLoading } = useTodo()
 
   return (
     <ListWrapper>
-      <h1>{counterContext.counter}</h1>
       <ul>
-        {data &&
-          data.map((todo, index) => {
+        {todos &&
+          todos.map((todo, index) => {
             return (
               <ListItem
                 key={todo.id}
@@ -27,7 +27,7 @@ function ListContent({ data, onUpdatedTodo, disabled }) {
                 onUpdatedTodo={onUpdatedTodo}
                 id={todo.id}
                 data={todo}
-                disabled={disabled}
+                disabled={isLoading}
               >
                 {todo.content}
               </ListItem>
